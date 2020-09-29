@@ -6,18 +6,11 @@ add_compile_options(-std=c++11)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
-  hardware_interface
-  controller_manager
-  dynamic_reconfigure
 )
 
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(catkin REQUIRED COMPONENTS roscpp std_msgs genmsg tf)
-
-generate_dynamic_reconfigure_options(
-  config/Hoverboard.cfg
-)
 
 catkin_package(
   INCLUDE_DIRS include
@@ -31,6 +24,7 @@ include_directories(
 
 add_executable(${PROJECT_NAME} 
   src/main.cpp
+  src/hover.cpp
 )
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
